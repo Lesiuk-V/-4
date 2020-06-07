@@ -52,7 +52,7 @@ void printSearchFilmMenu()
 void printSearchMovieSessionMenu()
 {
     cout << "\n\nПошук за полем: \n";
-    cout << "1. Назва залу" << endl;
+    cout << "1. Тип залу (IMAX: 1, 3D: 2, 2D: 3)" << endl;
     cout << "2. Час сеансу" << endl;
     cout << "3. Дата сеансу" << endl;
     cout << "4. id" << endl;
@@ -162,8 +162,6 @@ int main()
                 switch (variant)
                 {
                 case 1:
-
-                    break;
                     do
                     {
                         cout << "Введіть дані сеансу: ";

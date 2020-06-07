@@ -9,7 +9,7 @@ int MovieSession::setId()
     int id;
     string str;
     fstream file;
-    file.open("idMovieSesseion.txt", fstream::out | fstream::in);
+    file.open("idSession.txt", fstream::out | fstream::in);
     ifstream temp;
     while (!file.eof())
     {
@@ -18,28 +18,126 @@ int MovieSession::setId()
     }
     ++id;
     file.close();
-    file.open("id.txt", fstream::out | fstream::in);
+    file.open("idSession.txt", fstream::out | fstream::in);
     file << id;
     file.close();
     return id;
 }
 
-void MovieSession::create()
+int MovieSession::getFilm()
+{
+
+    Film film;
+    ifstream ifile;
+    int id;
+    ifile.open("Film.dat", ios::binary | ios::out | ios::in);
+    ifile.seekg(0);
+    int ok = 0;
+    int n;
+    while (ok != 1)
+    {
+        cout << "Введіть id фільму: ";
+        cin >> id;
+        for (int i = 0; i < Film::count(); i++)
+        {
+            ifile.seekg(i * sizeof(Film));
+            ifile.read(reinterpret_cast<char*>(&film), sizeof(Film));
+            n = film.getId();
+            if (id == n)
+            {
+                ok = 1;
+                return film.getId();
+            }
+        }
+        cout << "\nФільму з таким id немає. Введіть ще раз\n";
+    }
+
+
+
+}
+
+void MovieSession ::showHall(int variant)
+{
+    switch (variant)
+    {
+    case 1:
+        cout << " IMAX\n";
+        break;
+    case 2 :
+        cout << " 3D\n";
+        break;
+    case 3:
+        cout << " 2D\n";
+        break;
+    default:
+        cout << "unknow\n";
+        break;
+    }
+}
+
+void MovieSession::setHall()
 {
     cin.ignore(10, '\n');
-    id = setId();
-    cout << "\nВиберыть зал(IMAX - 1, 3D - 2, 2D- 3): ";
+    cout << "\nВиберіть зал(IMAX: 1, 3D: 2, 2D: 3): ";
+    int input = -1;
+    bool valid = false;
+    do
+    {
+        cin >> input;
+        if (cin.good())
+        {
+
+            if (input > 0 && input <= 4)
+                valid = true;
+
+            else
+            {
+                valid = false;
+                cout << "Помилка вводу. Введіть ще раз" << endl;
+            }
+
+        }
+        else
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Помилка вводу. Введіть ще раз" << endl;
+        }
+    } while (!valid);
+
+    switch (input)
+    {
+    case 1:
+        hall = IMAX;
+        break;
+    case 2:
+        hall = _3D;
+        break;
+    case 3:
+        hall = _2D;
+        break;
+    }
+}
+
+
+void MovieSession::create()
+{
+    setHall();
+    cin.ignore(10, '\n');
     cout << "Введіть час(години:хвилини): "; cin >> time;
-    cout << "Введіть час: "; cin >> date;
-    cout << "Введіть id фільму: ";
+    cout << "Введіть дату: "; cin >> date;
+    //cout << "Введіть id фільму: "; 
+    filmId =getFilm();
+    id = setId();
 }
 
 void MovieSession::print()
 {
     cout << "\nid: " << id << endl;
-    cout << "Зал: ";// << hall << endl;
+    cout << "Зал: "; showHall(hall);
     cout << "Час: " << time << endl;
     cout << "Дата: " << date << endl;
+    cout << "id фільму:" << filmId << endl;
 }
 
 void MovieSession::read(int pn)
@@ -89,7 +187,7 @@ int MovieSession::search(int variant)
         switch (variant)
         {
         case 1:
-            if ((int)str == movieSession.hall)
+            if (atoi(str) == movieSession.hall)
             {
                 movieSession.print();
             }

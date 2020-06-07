@@ -7,6 +7,7 @@ private:
 	char premiere[11];
 	char ganre[20];
 public:
+	int getId();
 	void create();
 	void print();
 	void read(int);

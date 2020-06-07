@@ -23,6 +23,10 @@ int Film::setId()
     file.close();
     return id;
 }
+int Film::getId()
+{
+    return id;
+}
 
 void Film::create()
 {
