@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30128.74
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Курсова Роботоа", "Курсова Роботоа\Курсова Роботоа.vcxproj", "{52DF7587-FD55-4859-89E2-D6BA7EF636CD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{52DF7587-FD55-4859-89E2-D6BA7EF636CD}.Debug|x64.ActiveCfg = Debug|x64
+		{52DF7587-FD55-4859-89E2-D6BA7EF636CD}.Debug|x64.Build.0 = Debug|x64
+		{52DF7587-FD55-4859-89E2-D6BA7EF636CD}.Debug|x86.ActiveCfg = Debug|Win32
+		{52DF7587-FD55-4859-89E2-D6BA7EF636CD}.Debug|x86.Build.0 = Debug|Win32
+		{52DF7587-FD55-4859-89E2-D6BA7EF636CD}.Release|x64.ActiveCfg = Release|x64
+		{52DF7587-FD55-4859-89E2-D6BA7EF636CD}.Release|x64.Build.0 = Release|x64
+		{52DF7587-FD55-4859-89E2-D6BA7EF636CD}.Release|x86.ActiveCfg = Release|Win32
+		{52DF7587-FD55-4859-89E2-D6BA7EF636CD}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D81B9DC3-F7F2-4C0B-9A6E-A766C5F52E18}
+	EndGlobalSection
+EndGlobal
